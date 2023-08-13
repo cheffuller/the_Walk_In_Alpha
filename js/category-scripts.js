@@ -1,15 +1,14 @@
-import {getData, displayItems, getCategories} from './scripts.js'
+import {getData, loadCategories, displayItems, formatCategoryName, getUrlParam} from './scripts.js'
 
-const getCategory = () => {
-    const url_string = window.location.href
-    const url = new URL(url_string);
-    const value = url.searchParams.get("category");
-    console.log(value)
-    getData(`/category/${value}`)
+const loadCategoryPage = async () => {
+    loadCategories()
+    const category = getUrlParam("category")
+    const categoryItemData = await getData(`/category/${category}`)
+    const categoryItems = categoryItemData.products
+    document.querySelector("#category").innerHTML = formatCategoryName(category)
+    categoryItems.forEach(item => {displayItems(item)});
 }
 
-
-
 window.onload = () => {
-    getCategory();
+    loadCategoryPage();
   };

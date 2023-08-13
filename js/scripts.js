@@ -4,17 +4,28 @@
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE)
 */
 
-const getData = async (parameter = '') => {
-    const response = await fetch(`https://dummyjson.com/products${parameter}`)
-    const dummyJSONData = await response.json()
-    const data = dummyJSONData.products
-    data.forEach(item => displayItems(item))
-    getCategories()
+const loadIndexPage = async () => {
+    const productsObject = await getData()
+    const products = productsObject.products
+    products.forEach(item => displayItems(item))
+    loadCategories()
 }
 
-const getCategories = async () => {
-    const response = await fetch('https://dummyjson.com/products/categories')
-    const categories = await response.json()
+const getData = async (parameter = '') => {
+    const response = await fetch(`https://dummyjson.com/products${parameter}`)
+    const data = await response.json()
+    return data
+}
+
+const getUrlParam = (parameter) => {
+    const url_string = window.location.href
+    const url = new URL(url_string);
+    const value = url.searchParams.get(`${parameter}`);
+    return value
+}
+
+const loadCategories = async () => {
+    const categories = await getData('/categories')
     categories.sort()
     categories.forEach(category => displayCategories(category))
 }
@@ -24,10 +35,14 @@ const displayCategories = (category) => {
     const listItem = document.createElement("li")
     const a = document.createElement("a")
     a.className = "dropdown-item"
-    a.innerHTML = category.replace('-', ' ').replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())
-    a.href = `category.html?category=${category}`
+    a.innerHTML = formatCategoryName(category)
+    a.href = `/pages/category.html?category=${category}`
     listItem.append(a)
     catMenu.append(listItem)
+}
+
+const formatCategoryName = (category) => {
+    return category.replace('-', ' ').replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())
 }
 
 const displayItems = (item) => {
@@ -73,7 +88,7 @@ const createDetailButton = (item) => {
     const div = createDiv("text-center")
     const button = document.createElement("a")
     button.className = "btn btn-outline-dark mt-auto"
-    button.href = `item.html?product-id=${item.id}`
+    button.href = `/pages/item.html?product-id=${item.id}`
     button.innerHTML = "View Details"
     div.append(button)
     return div
@@ -81,7 +96,7 @@ const createDetailButton = (item) => {
 
 // function that calls getData() when the window has loaded
 window.onload = () => {
-    getData();
+    loadIndexPage();
   };
 
-export {getData, displayItems, getCategories}
+export {getData, loadCategories, displayItems, formatCategoryName, getUrlParam}

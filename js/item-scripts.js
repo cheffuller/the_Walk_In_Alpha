@@ -1,23 +1,14 @@
-import {displayItems, getCategories} from './scripts.js'
+import {getData, loadCategories, displayItems, getUrlParam} from './scripts.js'
 
-const getItemId = () => {
-    const url_string = window.location.href
-    const url = new URL(url_string);
-    const id = url.searchParams.get("product-id");
-    return id
-}
-
-const getItemData = async () => {
-    const id = getItemId()
-    const response = await fetch(`https://dummyjson.com/products/${id}`)
-    const data = await response.json()
-    const catResponse = await fetch(`https://dummyjson.com/products/category/${data.category}?limit=5`)
-    const catData = await catResponse.json()
-    const relatedItems = catData.products
-    displayItem(data)
+const loadItemPage = async () => {
+    loadCategories()
+    const id = getUrlParam("product-id")
+    const itemData = await getData(`/${id}`)
+    displayItem(itemData)
+    const relatedItemData = await getData(`/category/${itemData.category}?limit=5`)
+    const relatedItems = relatedItemData.products
     removeCurrentItem(id, relatedItems)
     relatedItems.forEach(item => {displayItems(item)});
-    getCategories()
 }
 
 const displayItem = (item) => {
@@ -46,5 +37,5 @@ const removeCurrentItem = (item, array) => {
 
 // function that calls getData() when the window has loaded
 window.onload = () => {
-    getItemData();
+    loadItemPage();
   };
