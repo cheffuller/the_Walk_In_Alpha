@@ -49,7 +49,7 @@ const displayItems = (item) => {
     const displayWindow = document.querySelector("#display");
     const divOne = createDiv("col mb-5")
     const divTwo = createDiv("card h-100")
-    const img = createImage(item)
+    const img = createImage(item, "card-img-top thumbnail")
     const divThree = createDiv("card-body p-4")
     const divFour = createDiv("text-center")
     const divFive = createDiv("card-footer p-4 pt-0 border-top-0 bg-transparent")
@@ -66,13 +66,13 @@ const displayItems = (item) => {
 
 const createDiv = (className) => {
     const div = document.createElement("div")
-    div.className = `${className}`
+    div.className = className
     return div
 }
 
-const createImage = (item) => {
+const createImage = (item, imgClassName) => {
     const img = document.createElement("img");
-    img.className = "card-img-top thumbnail"
+    img.className = imgClassName
     img.src = item.thumbnail;
     return img
 }

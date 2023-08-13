@@ -1,16 +1,26 @@
 import {getData, loadCategories, displayItems, getUrlParam} from './scripts.js'
 
+// main body of javascript for item page
 const loadItemPage = async () => {
+    // loads categories into menu bar
     loadCategories()
+    // gets the current product id from the url
     const id = getUrlParam("product-id")
+    // gets the item data based on product id
     const itemData = await getData(`/${id}`)
+    // calls function to display item data
     displayItem(itemData)
+    // gets the related item object from the API
     const relatedItemData = await getData(`/category/${itemData.category}?limit=5`)
+    // creates a related items array from the related items object
     const relatedItems = relatedItemData.products
+    // removes main item from related items array
     removeCurrentItem(id, relatedItems)
+    // displays each item in the relatedItems array
     relatedItems.forEach(item => {displayItems(item)});
 }
 
+// function to display the selected item info on the page
 const displayItem = (item) => {
     document.querySelector("title").innerHTML = item.title
     document.querySelector("#item-image").src = item.thumbnail;
@@ -21,6 +31,8 @@ const displayItem = (item) => {
     document.querySelector("#item-stock").append(`${item.stock}`)
 }
 
+// function to remove the current main item displayed on the page from the Related Items
+// displayed below
 const removeCurrentItem = (item, array) => {
     let currentItem = -1
     array.forEach((element, index) => {
@@ -35,7 +47,7 @@ const removeCurrentItem = (item, array) => {
     }
 }
 
-// function that calls getData() when the window has loaded
+// function that calls main body of code when the window loads
 window.onload = () => {
     loadItemPage();
   };
