@@ -5,14 +5,14 @@
 */
 
 const loadIndexPage = async () => {
-    const productsObject = await getData()
+    const productsObject = await getData(`products/`)
     const products = productsObject.products
     products.forEach(item => displayItems(item))
     loadCategories()
 }
 
 const getData = async (parameter = '') => {
-    const response = await fetch(`https://dummyjson.com/products${parameter}`)
+    const response = await fetch(`https://dummyjson.com/${parameter}`)
     const data = await response.json()
     return data
 }
@@ -25,7 +25,7 @@ const getUrlParam = (parameter) => {
 }
 
 const loadCategories = async () => {
-    const categories = await getData('/categories')
+    const categories = await getData('products/categories')
     categories.sort()
     categories.forEach(category => displayCategories(category))
 }
@@ -70,9 +70,9 @@ const createDiv = (className) => {
     return div
 }
 
-const createImage = (item, imgClassName) => {
+const createImage = (item, className) => {
     const img = document.createElement("img");
-    img.className = imgClassName
+    img.className = className
     img.src = item.thumbnail;
     return img
 }
@@ -99,4 +99,4 @@ window.onload = () => {
     loadIndexPage();
   };
 
-export {getData, loadCategories, displayItems, formatCategoryName, getUrlParam}
+export {getData, loadCategories, displayItems, formatCategoryName, getUrlParam, createDiv, createImage}

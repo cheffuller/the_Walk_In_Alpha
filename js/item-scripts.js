@@ -7,11 +7,11 @@ const loadItemPage = async () => {
     // gets the current product id from the url
     const id = getUrlParam("product-id")
     // gets the item data based on product id
-    const itemData = await getData(`/${id}`)
+    const itemData = await getData(`products/${id}`)
     // calls function to display item data
     displayItem(itemData)
     // gets the related item object from the API
-    const relatedItemData = await getData(`/category/${itemData.category}?limit=5`)
+    const relatedItemData = await getData(`products/category/${itemData.category}?limit=5`)
     // creates a related items array from the related items object
     const relatedItems = relatedItemData.products
     // removes main item from related items array

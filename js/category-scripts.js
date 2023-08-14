@@ -10,7 +10,7 @@ const loadCategoryPage = async () => {
     document.querySelector("title").innerHTML = formatCategoryName(category)
     document.querySelector("#category").innerHTML = formatCategoryName(category)
     // gets the current category item object from the API
-    const categoryItemData = await getData(`/category/${category}`)
+    const categoryItemData = await getData(`products/category/${category}`)
     // creates a category items array from the category items object
     const categoryItems = categoryItemData.products
     // displays the item data for each item in the array
