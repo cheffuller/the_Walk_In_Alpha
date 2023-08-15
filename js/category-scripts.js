@@ -1,4 +1,4 @@
-import {getData, loadCategories, displayItems, formatCategoryName, getUrlParam} from './scripts.js'
+import {getData, loadCategoriesFromPages, displayItems, formatCategoryName, getUrlParam} from './scripts.js'
 
 // main body of javascript for category page
 const loadCategoryPage = async () => {

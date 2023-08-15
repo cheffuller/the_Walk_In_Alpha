@@ -29,6 +29,15 @@ const getUrlParam = (parameter) => {
 
 // function to get the categories in the API, sort them alphabetically and call 
 // the function to display them
+// this function will write to the html files in the pages directory
+const loadCategoriesFromPages = async () => {
+    const categories = await getData('products/categories')
+    categories.sort()
+    categories.forEach(category => displayCategoriesFromPages(category))
+}
+
+// function to get the categories in the API, sort them alphabetically and call 
+// the function to display them
 const loadCategories = async () => {
     const categories = await getData('products/categories')
     categories.sort()
@@ -43,6 +52,19 @@ const displayCategories = (category) => {
     a.className = "dropdown-item"
     a.innerHTML = formatCategoryName(category)
     a.href = `pages/category.html?category=${category}`
+    listItem.append(a)
+    catMenu.append(listItem)
+}
+
+// function to display the categories and create dynamic links in the menu bar
+// this function will write to the html files in the pages directory
+const displayCategoriesFromPages = (category) => {
+    const catMenu = document.querySelector(".dropdown-menu")
+    const listItem = document.createElement("li")
+    const a = document.createElement("a")
+    a.className = "dropdown-item"
+    a.innerHTML = formatCategoryName(category)
+    a.href = `category.html?category=${category}`
     listItem.append(a)
     catMenu.append(listItem)
 }
@@ -110,7 +132,7 @@ const createDetailButton = (item) => {
 // function that calls getData() when the window has loaded
 window.onload = () => {
     loadIndexPage();
-  };
+};
 
 // exports the functions used by the other pages
-export {getData, loadCategories, displayItems, formatCategoryName, getUrlParam, createDiv, createImage}
+export {getData, loadCategoriesFromPages, displayItems, formatCategoryName, getUrlParam, createDiv, createImage}

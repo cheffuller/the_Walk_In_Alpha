@@ -1,4 +1,4 @@
-import {getData, loadCategories, createDiv, createImage, formatCategoryName} from './scripts.js'
+import {getData, loadCategoriesFromPages, createDiv, createImage, formatCategoryName} from './scripts.js'
 
 // main body of code for cart html page
 const loadCartPage = async () => {

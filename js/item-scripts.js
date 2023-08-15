@@ -1,4 +1,4 @@
-import {getData, loadCategories, displayItems, getUrlParam} from './scripts.js'
+import {getData, loadCategoriesFromPages, displayItems, getUrlParam} from './scripts.js'
 
 // main body of javascript for item page
 const loadItemPage = async () => {
