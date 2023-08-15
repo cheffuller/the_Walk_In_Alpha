@@ -23,7 +23,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="../index.html">The Walk-In</a>
+        <a class="navbar-brand" href="">The Walk-In</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -38,14 +38,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
             <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="../index.html"
-                >Home</a
-              >
+              <a class="nav-link active" aria-current="page" href="#!">Home</a>
             </li>
-            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -64,7 +61,7 @@
               </ul>
             </li>
           </ul>
-          <a href="/pages/cart.html">
+          <a href="cart.html">
             <button class="btn btn-outline-dark">
               <i class="bi-cart-fill me-1"></i>
               Cart
@@ -74,46 +71,32 @@
         </div>
       </div>
     </nav>
-    <!-- Product section-->
-    <section class="py-5">
+    <!-- Header-->
+    <header class="bg-dark py-5">
       <div class="container px-4 px-lg-5 my-5">
-        <div class="row gx-4 gx-lg-5 align-items-center">
-          <div class="col-md-6">
-            <img id="item-image" class="card-img-top mb-5 mb-md-0" alt="..." />
-          </div>
-          <div class="col-md-6">
-            <div id="item-id" class="small mb-1">Product ID:</div>
-            <h1 id="item-title" class="display-5 fw-bolder"></h1>
-            <div class="fs-5 mb-5">
-              <span id="item-price"></span>
-            </div>
-            <p id="item-description" class="lead"></p>
-            <div class="d-flex">
-              <input
-                class="form-control text-center me-3"
-                id="inputQuantity"
-                type="num"
-                value="1"
-                style="max-width: 3rem"
-              />
-              <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                <i class="bi-cart-fill me-1"></i>
-                Add to cart
-              </button>
-            </div>
-            <div id="item-stock" class="small mb-1">In Stock:</div>
-          </div>
+        <div class="text-center text-white">
+          <h1 class="display-4 fw-bolder">The Walk-In - {Alpha Testing}</h1>
+          <p class="lead fw-normal text-white-50 mb-0">
+            do all of your restaurant's orders in one place
+          </p>
+          <p class="lead fw-normal text-white-50 mb-0">
+            we are currently under construction and serving up dummy data
+          </p>
         </div>
       </div>
-    </section>
-    <!-- Related items section-->
-    <section class="py-5 bg-light">
+    </header>
+    <!-- Section-->
+    <section class="py-5">
       <div class="container px-4 px-lg-5 mt-5">
-        <h2 class="fw-bolder mb-4">Related products</h2>
         <div
           id="display"
           class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
-        ></div>
+        >
+          The Walk-In will be a place where you can place all of your
+          restaurants orders at once, in one location. <br /><br />
+          We'll make sure the correct order information is sent to each of your
+          vendors for you.
+        </div>
       </div>
     </section>
     <!-- Footer-->
@@ -127,6 +110,6 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script type="module" src="../js/item-scripts.js"></script>
+    <script type="module" src="../js/about-scripts.js"></script>
   </body>
 </html>
