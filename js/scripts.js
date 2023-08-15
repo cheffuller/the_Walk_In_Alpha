@@ -42,7 +42,7 @@ const displayCategories = (category) => {
     const a = document.createElement("a")
     a.className = "dropdown-item"
     a.innerHTML = formatCategoryName(category)
-    a.href = `/pages/category.html?category=${category}`
+    a.href = `pages/category.html?category=${category}`
     listItem.append(a)
     catMenu.append(listItem)
 }
@@ -101,7 +101,7 @@ const createDetailButton = (item) => {
     const div = createDiv("text-center")
     const button = document.createElement("a")
     button.className = "btn btn-outline-dark mt-auto"
-    button.href = `/pages/item.html?product-id=${item.id}`
+    button.href = `pages/item.html?product-id=${item.id}`
     button.innerHTML = "View Details"
     div.append(button)
     return div
