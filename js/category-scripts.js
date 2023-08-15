@@ -3,7 +3,7 @@ import {getData, loadCategoriesFromPages, displayItems, formatCategoryName, getU
 // main body of javascript for category page
 const loadCategoryPage = async () => {
     // loads categories into menu bar
-    loadCategories()
+    loadCategoriesFromPages()
     // gets the current category name from the url
     const category = getUrlParam("category")
     // writes the category name to the html page

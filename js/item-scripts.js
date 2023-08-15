@@ -3,7 +3,7 @@ import {getData, loadCategoriesFromPages, displayItems, getUrlParam} from './scr
 // main body of javascript for item page
 const loadItemPage = async () => {
     // loads categories into menu bar
-    loadCategories()
+    loadCategoriesFromPages()
     // gets the current product id from the url
     const id = getUrlParam("product-id")
     // gets the item data based on product id

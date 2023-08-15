@@ -3,7 +3,7 @@ import {getData, loadCategoriesFromPages, createDiv, createImage, formatCategory
 // main body of code for cart html page
 const loadCartPage = async () => {
     // loads categories into menu bar
-    loadCategories()
+    loadCategoriesFromPages()
     // randomly selects a cart number between 1-20
     const cartNumber = getRandomIntInclusive().toString()
     // gets the cart data from the API
