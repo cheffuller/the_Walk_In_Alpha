@@ -95,6 +95,26 @@ const displayItems = (item) => {
     displayWindow.append(divOne);
 }
 
+// function that creates the nested div structure for each item and displays the items info
+const displayItemsFromPages = (item) => {
+    const displayWindow = document.querySelector("#display");
+    const divOne = createDiv("col mb-5")
+    const divTwo = createDiv("card h-100")
+    const img = createImage(item, "card-img-top thumbnail")
+    const divThree = createDiv("card-body p-4")
+    const divFour = createDiv("text-center")
+    const divFive = createDiv("card-footer p-4 pt-0 border-top-0 bg-transparent")
+    divOne.append(divTwo)
+    divTwo.append(img)
+    divTwo.append(divThree)
+    divThree.append(divFour)
+    divFour.append(createItemTitle(item))
+    divFour.append(`$${item.price.toFixed(2)}`)
+    divTwo.append(divFive)
+    divFive.append(createDetailButtonFromPages(item))
+    displayWindow.append(divOne);
+}
+
 // function that creates a div and assigns it a class name
 const createDiv = (className) => {
     const div = document.createElement("div")
@@ -119,11 +139,11 @@ const createItemTitle = (item) => {
 }
 
 // function that creates a "view detail button for each item"
-const createDetailButton = (item) => {
+const createDetailButtonFromPages = (item) => {
     const div = createDiv("text-center")
     const button = document.createElement("a")
     button.className = "btn btn-outline-dark mt-auto"
-    button.href = `pages/item.html?product-id=${item.id}`
+    button.href = `item.html?product-id=${item.id}`
     button.innerHTML = "View Details"
     div.append(button)
     return div
@@ -135,4 +155,4 @@ window.onload = () => {
 };
 
 // exports the functions used by the other pages
-export {getData, loadCategoriesFromPages, displayItems, formatCategoryName, getUrlParam, createDiv, createImage}
+export {getData, loadCategoriesFromPages, displayItemsFromPages, formatCategoryName, getUrlParam, createDiv, createImage}

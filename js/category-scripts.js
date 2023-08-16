@@ -1,4 +1,4 @@
-import {getData, loadCategoriesFromPages, displayItems, formatCategoryName, getUrlParam} from './scripts.js'
+import {getData, loadCategoriesFromPages, displayItemsFromPages, formatCategoryName, getUrlParam} from './scripts.js'
 
 // main body of javascript for category page
 const loadCategoryPage = async () => {
@@ -14,7 +14,7 @@ const loadCategoryPage = async () => {
     // creates a category items array from the category items object
     const categoryItems = categoryItemData.products
     // displays the item data for each item in the array
-    categoryItems.forEach(item => {displayItems(item)});
+    categoryItems.forEach(item => {displayItemsFromPages(item)});
 }
 
 // function that calls main body of code when the window loads

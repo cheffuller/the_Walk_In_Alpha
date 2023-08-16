@@ -1,4 +1,4 @@
-import {getData, loadCategoriesFromPages, displayItems, getUrlParam} from './scripts.js'
+import {getData, loadCategoriesFromPages, displayItemsFromPages, getUrlParam} from './scripts.js'
 
 // main body of javascript for item page
 const loadItemPage = async () => {
@@ -17,7 +17,7 @@ const loadItemPage = async () => {
     // removes main item from related items array
     removeCurrentItem(id, relatedItems)
     // displays each item in the relatedItems array
-    relatedItems.forEach(item => {displayItems(item)});
+    relatedItems.forEach(item => {displayItemsFromPages(item)});
 }
 
 // function to display the selected item info on the page
