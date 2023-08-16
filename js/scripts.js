@@ -139,6 +139,18 @@ const createItemTitle = (item) => {
 }
 
 // function that creates a "view detail button for each item"
+const createDetailButton = (item) => {
+    const div = createDiv("text-center")
+    const button = document.createElement("a")
+    button.className = "btn btn-outline-dark mt-auto"
+    button.href = `pages/item.html?product-id=${item.id}`
+    button.innerHTML = "View Details"
+    div.append(button)
+    return div
+}
+
+
+// function that creates a "view detail button for each item"
 const createDetailButtonFromPages = (item) => {
     const div = createDiv("text-center")
     const button = document.createElement("a")
