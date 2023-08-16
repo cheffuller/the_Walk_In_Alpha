@@ -10834,6 +10834,10 @@ textarea.form-control-lg {
   padding: 10px;
 }
 
+.about-p {
+  width: 80%;
+}
+
 #item-stock {
   margin-top: 5px;
 }
